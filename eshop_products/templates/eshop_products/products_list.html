@@ -1,0 +1,81 @@
+{% extends 'sherad/_Main.html' %} {% load static %} {% block Content %}
+
+    <main>
+        <!-- slider Area Start-->
+        <div class="slider-area">
+            <!-- Mobile Menu -->
+            <div
+                    class="single-slider slider-height2 d-flex align-items-center"
+                    data-background="{% static 'img/hero/category.jpg' %}"
+            >
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="hero-cap text-center">
+                                <h2>Product</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- slider Area End-->
+
+        <!-- Latest Products Start -->
+        <section class="latest-product-area latest-padding">
+            <div class="container">
+                <!-- Nav Card -->
+                <div class="tab-content" id="nav-tabContent">
+                    <!-- card one -->
+                    <div
+                            class="tab-pane fade show active"
+                            id="nav-home"
+                            role="tabpanel"
+                            aria-labelledby="nav-home-tab"
+                    >
+                        <div class="row">
+                            {% for product in page_obj %}
+                                {% include 'eshop_products/product_item_component.html' with product=product %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <!-- End Nav Card -->
+            </div>
+            <nav class="blog-pagination justify-content-center d-flex">
+                <ul class="pagination">
+                    <li class="page-item">
+                        {% if page_obj.has_previous %}
+                            <a
+                                    href="?page={{ page_obj.previous_page_number }}"
+                                    class="page-link"
+                                    aria-label="Previous"
+                            >
+                            <i class="ti-angle-left active"></i>
+                        {% endif %}
+                        </a>
+                    </li>
+
+                    {% for page in paginator.page_range %}
+                        <li class="page-item active">
+                            <a href="?page= {{ page }} " class="page-link active">{{ page }}</a>
+                        </li>
+                    {% endfor %} {% if page_obj.has_next %}
+                    <li class="page-item active">
+                        <a
+                                href="?page={{ page_obj.next_page_number }}"
+                                class="page-link"
+                                aria-label="Next"
+                        >
+                            <i class="ti-angle-right"></i>
+                        </a>
+                    </li>
+                {% endif %}
+                </ul>
+            </nav>
+        </section>
+
+        <!-- Latest Products End -->
+    </main>
+
+{% endblock %}

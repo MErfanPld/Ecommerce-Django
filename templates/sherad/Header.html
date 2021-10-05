@@ -1,0 +1,77 @@
+{% load static %}
+
+<!-- Preloader Start -->
+<div id="preloader-active">
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="preloader-inner position-relative">
+            <div class="preloader-circle"></div>
+            <div class="preloader-img pere-text">
+                <img src="{% static 'img/logo/logo.png' %}" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+<header>
+    <!-- Header Start -->
+    <div class="header-area">
+        <div class="main-header ">
+
+            <div class="header-bottom  header-sticky">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <!-- Logo -->
+                        <div class="col-xl-1 col-lg-1 col-md-1 col-sm-3">
+                            <div class="logo">
+                                <a href="/"><img src="{% static 'img/logo/logo.png' %}" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-8 col-md-7 col-sm-5">
+                            <!-- Main-menu -->
+                            <div class="main-menu f-right d-none d-lg-block">
+                                <nav>
+                                    <ul id="navigation">
+                                        <li><a href="/">Home</a></li>
+                                        <li><a href="/products">Product</a></li>
+                                        <li><a href="/">Blog</a></li>
+                                        {% if request.user.is_authenticated %}
+                                        <li><a href="/account/profile">Profile</a></li>
+                                        {% endif %}
+                                        <li><a href="/about-us">About</a></li>
+                                        <li><a href="/contact-us">Contact</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="col-xl-5 col-lg-3 col-md-3 col-sm-3 fix-card">
+                            <ul class="header-right f-right d-none d-lg-block d-flex justify-content-between">
+                                <li class="d-none d-xl-block">
+                                    {% include 'sherad/search_products_input_component.html' %}
+                                </li>
+                            {% if request.user.is_authenticated %}
+                                <li>
+                                    <div class="shopping-card">
+                                        <a href="/open-order"><i class="fas fa-shopping-cart"></i></a>
+                                    </div>
+                                </li>
+                            {% endif %}
+                                {% if not request.user.is_authenticated %}
+                                    <li class="d-none d-lg-block"><a href="/login" class="btn header-btn">Register |
+                                        Login</a></li>
+                                {% else %}
+                                    <li class="d-none d-lg-block"><a href="/logout" class="btn header-btn">Log Out</a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                        <!-- Mobile Menu -->
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+</header>

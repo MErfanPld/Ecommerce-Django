@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>eCommerce</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="manifest" href="{% static 'site.webmanifest' %}">
+		<link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
+
+        {% include 'sherad/_Header.html' %}
+
+   </head>
+
+   <body>
+
+
+    <!-- Preloader Start -->
+
+{% include 'sherad/Header.html' %}
+
+
+{% block Content %}{% endblock %}
+
+	{% include 'sherad/Footer.html' %}
+	{% include 'sherad/_Footer.html' %}
+
+    </body>
+</html>
